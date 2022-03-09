@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
+//force: true --> forces database connection to sync model definition and associations if association changes
+//similar to 'drop table if exists'
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });
